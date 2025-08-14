@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sarap Kainis</title>
+  <link rel="icon" type="image/png" sizes="128x128" href="Images/favicon-48.png">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    nav {
+      background-color: #FFAC1C;
+      padding: 20px 30px;
+      display: flex;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    #content {
+      padding: 20px;
+      background-color: white;
+      min-height: 300px;
+    }
+
+    .page-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .main-text {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .form-container {
+      flex: 1;
+      max-width: 400px;
+      margin-left: auto;
+      background-color: #fafafa;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #ffcc00;
+      color: black;
+    }
+
+    .menu-category {
+      margin-bottom: 30px;
+      background-color: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .menu-category h3 {
+      margin-top: 0;
+      color: #d35400;
+    }
+
+    .menu-category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .menu-category li {
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .menu-item {
+      background-color: #fff8e1;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.03);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h4 {
+      font-size: 1.2em;
+      margin: 10px 0 5px;
+      color: #d35400;
+    }
+
+    .menu-item p {
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    .menu-item button {
+      background-color: #FFAC1C;
+      border: none;
+      padding: 10px 16px;
+      font-size: 0.95em;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .menu-item button:hover {
+      background-color: #ffcc00;
+      color: black;
+    }
+
+    .banner {
+      background-image: url('Images/Banner.png');
+      background-size: cover;
+      background-position: center;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .banner h1 {
+      font-size: 2.5em;
+      background-color: rgba(0,0,0,0.4);
+      padding: 20px 40px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" onclick="loadPage('home')">Home</a>
+    <a href="#" onclick="loadPage('Aboutus')">About us</a>
+    <a href="#" onclick="loadPage('Comingsoon')">Coming soon</a>
+    <a href="#" onclick="loadPage('Login')">Login</a>
+    <a href="#" onclick="logoutUser()">Logout</a>
+  </nav>
+
+  <div id="content"></div>
+
+  <script>
+    const pages = {
+      home: `
+        <div class="banner">
+         
+        </div>
+        <b><h2>Featured Items</h2></b>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img src="Images/FriedMoz.png" alt="Fried Mozarella Sticks">
+            <h4>Fried Mozarella Sticks - ₱85</h4>
+            <p>Parang Mozarella stick, mainit pa nung una, pero lumalamig na rin</p>
+            <button onclick="addToCart('Fried Mozarella Sticks', 85)">🛒 Add to Cart</button>
+          </div>
+          <div class="menu-item">
+            <img src="Images/Balls.png" alt="Potato Cheese Balls">
+            <h4>Potato Cheese Balls - ₱120</h4>
+            <p>Binigay ko sa'yo huling potato Cheese balls ko, pero iniwan mo parin ako</p>
+            <button onclick="addToCart('Fried Mozarella Sticks', 85)">🛒 Add to Cart</button>
+          </div>
+          <div class="menu-item">
+            <img src="Images/Chichira.png" alt="Nachos with Dips">
+            <h4>Nachos with Dips - ₱99</h4>
+            <p>Parang Nachos, kahit gaano karami kulang ka pa rin pag wala ka</p>
+            <button onclick="addToCart('Fried Mozarella Sticks', 85)">🛒 Add to Cart</button>
+          </div>
+        </div>
+      `,
+      Aboutus: `
+        <h2>About us</h2>
+        <p>wala 🤫🤫</p>
+      `,
+      Comingsoon: `
+        <h2>Coming Soon</h2>
+        <p>Stay tuned for new dishes and features!</p>
+      `,
+      Login: `
+  <div class="page-layout">
+    <div class="main-text">
+      <h2>Login</h2>
+      <p>Welcome back! Please enter your credentials.</p>
+      <form class="form-container">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <hr>
+
+      <h3>Don't have an account?</h3>
+      <form class="form-container">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+  </div>
+`
+    };
+
+    function loadPage(page) {
+      document.getElementById('content').innerHTML = pages[page];
+    }
+
+    function addToCart(item, price) {
+      alert(`${item} has been added to your cart for ₱${price}`);
+    }
+
+    function logoutUser() {
+      alert("You have been logged out.");
+    }
+
+    // Load home page by default
+    window.onload = () => loadPage('home');
+  </script>
+</body>
+</html>
